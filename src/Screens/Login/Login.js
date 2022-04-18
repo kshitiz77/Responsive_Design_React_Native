@@ -5,9 +5,9 @@ import { styles } from './styles';
 import { moderateScaleVertical, scale } from '../../styles/responsiveSize';
 import colors from '../../styles/colors';
 import strings from '../../constants/lang';
-import TextInputWithLables from '../../components/TextInputWithLables';
+import TextInputWithLables from '../../Components/TextInputWithLables';
 import imagePath from '../../constants/imagePath';
-import ButtonComp from '../../components/ButtonComp';
+import ButtonComp from '../../Components/ButtonComp';
 import navigationStrings from '../../constants/navigationStrings';
 
 // create a component
@@ -36,7 +36,7 @@ const Login = ({navigation}) => {
                     onPressRight={() => setIsVisible(!isVisible)}
                     />
                 <TouchableOpacity style={styles.forgotView} activeOpacity={0.5}>
-                    <Text style={styles.forgotTextStyle}>{strings.FORGOT_PASSWORD}</Text>
+                    <Text style={styles.forgotTextStyle}>{strings.FORGOT_PASSWORD_TEXT}</Text>
                 </TouchableOpacity>
                 <ButtonComp 
                     btnText={strings.LOGIN}

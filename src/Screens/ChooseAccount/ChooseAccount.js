@@ -5,7 +5,7 @@ import HeaderComp from '../../Components/HeaderComp';
 import { moderateScale } from '../../styles/responsiveSize';
 import strings from '../../constants/lang';
 import { styles } from './styles';
-import ButtonComp from '../../components/ButtonComp';
+import ButtonComp from '../../Components/ButtonComp'
 import imagePath from '../../constants/imagePath';
 import navigationStrings from '../../constants/navigationStrings'
 // create a component

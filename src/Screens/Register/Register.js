@@ -5,19 +5,21 @@ import HeaderComp from '../../Components/HeaderComp';
 import { moderateScale, moderateScaleVertical } from '../../styles/responsiveSize';
 import strings from '../../constants/lang';
 import { styles } from './styles';
-import ButtonComp from '../../components/ButtonComp';
+import ButtonComp from '../../Components/ButtonComp';
 import imagePath from '../../constants/imagePath';
 import navigationStrings from '../../constants/navigationStrings'
 import TextInputWithLables from '../../Components/TextInputWithLables'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 // create a component
-const Register = () => {
+const Register = ({navigation}) => {
     const [isTrue, setIsTrue] = useState()
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <View style={styles.container}>
                 <HeaderComp />
-                <ScrollView showsVerticalScrollIndicator={false}>
+                <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
+                    <Text style={styles.headingStyle}>{strings.REGISTER}</Text>
                 <View style={{ flexDirection: 'row' }}>
                     <TextInputWithLables
                         label={strings.FIRST_NAME}
@@ -83,9 +85,9 @@ const Register = () => {
                 <ButtonComp
                     btnText={strings.CONTINUE}
                     btnStyle={{ width: '100%' }}
-                    onPress={() => navigation.navigate(navigationStrings.REGISTER)}
+                    onPress={() => navigation.navigate(navigationStrings.SET_PASSWORD)}
                 />
-                </ScrollView>
+                </KeyboardAwareScrollView>
             </View>
         </SafeAreaView>
     );

@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
     imageStyle:{
       height:moderateScale(140),
       width:moderateScale(140),
-      borderRadius:moderateScale(70)
+      borderRadius:moderateScale(140/2)
     },
     textStyle:{
       fontSize:scale(20),

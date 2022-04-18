@@ -8,6 +8,13 @@ export const styles = StyleSheet.create({
         flex: 1,
         paddingHorizontal: moderateScale(24),
     },
+    headingStyle:{
+        fontSize:scale(22),
+        fontWeight:'600',
+        color:colors.black,
+        marginBottom:moderateScaleVertical(24),
+        textTransform:'uppercase',
+    },
     bottomView: {
         flexDirection: 'row',
         alignItems: 'center',

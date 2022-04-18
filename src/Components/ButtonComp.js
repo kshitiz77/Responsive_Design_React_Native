@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import colors from '../styles/colors';
 import { moderateScale, moderateScaleVertical, scale } from '../styles/responsiveSize';
 
@@ -8,14 +8,16 @@ import { moderateScale, moderateScaleVertical, scale } from '../styles/responsiv
 const ButtonComp = ({
     btnStyle,
     btnText,
-    onPress = () =>{}
+    onPress = () =>{},
+    img
 }) => {
     return (
         <TouchableOpacity 
         activeOpacity={0.8}
         onPress={onPress}
         style={{...styles.btnStyle, ...btnStyle}}>
-            <Text style={styles.btnTextStyle}>{btnText}</Text>
+            {img ? <Image style={{tintColor:colors.white}} source={img}/> : <Text style={styles.btnTextStyle}>{btnText}</Text>}
+            
         </TouchableOpacity>
     );
 };
