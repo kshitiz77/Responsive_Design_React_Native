@@ -12,7 +12,6 @@ export default{
     REGISTER:'Register',
     JOIN_NOW:"Join Now",
     NOT_A_MEMBER:"Not a member?",
-    LOGIN_CAP_TEXT:"LOGIN",
     CHOOSE_YOUR_ACCOUNT_TYPE:"Choose your account type",
     AGENCY:'Agency',
     FREELANCER:'Freelancer',
@@ -35,5 +34,9 @@ export default{
     ADDRESS:'Address',
     ENTER_YOUR_ADDRESS:'Enter your address',
     REFERRAL_CODE:'Referral Code',
-    PRIVACY_POLICY_TEXT:`By Logging in, you agree to NOOVVOO's Privacy Policy and Terms of use `
+    PRIVACY_POLICY_TEXT:`By Logging in, you agree to NOOVVOO's Privacy Policy and Terms of use `,
+    SEND:'SEND',
+    CHANGE_LANGUAGE_EN : 'Change language - English',
+    CHANGE_LANGUAGE_FR : 'Change language - French',
+    LOGIN_WITH_FACEBOOK : 'Login with facebook',
 }

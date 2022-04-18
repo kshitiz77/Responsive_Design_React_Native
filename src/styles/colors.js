@@ -6,5 +6,6 @@ export default {
   grayA: 'rgb(166, 166, 166)',
   grayB: 'rgb(145, 145, 145)',
   grayC: 'rgb(120, 120, 120)',
-  grayD: 'rgb(74, 74, 74)'
+  grayD: 'rgb(74, 74, 74)',
+  blue : '#3582ff'
 };

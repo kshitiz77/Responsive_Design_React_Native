@@ -8,4 +8,6 @@ export default{
     avtarImg:require('../assets/images/avtar.png'),
     activeCheck:require('../assets/images/activeCheck.png'),
     inactiveCheck:require('../assets/images/inactiveCheck.png'),
+    fbLogo:require('../assets/images/fb-logo.png'),
+    googleLogo:require('../assets/images/google.png'),
 }

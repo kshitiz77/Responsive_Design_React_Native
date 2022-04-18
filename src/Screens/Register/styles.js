@@ -1,6 +1,7 @@
-import { scale, moderateScale, verticalScale, moderateScaleVertical } from '../../styles/responsiveSize'
 import { StyleSheet } from 'react-native';
 import colors from '../../styles/colors';
+import { moderateScale, moderateScaleVertical, scale } from '../../styles/responsiveSize';
+import fontFamily from '../../styles/fontFamily'
 
 // define your styles
 export const styles = StyleSheet.create({
@@ -10,7 +11,7 @@ export const styles = StyleSheet.create({
     },
     headingStyle:{
         fontSize:scale(22),
-        fontWeight:'600',
+        fontFamily:fontFamily.mulishBold,
         color:colors.black,
         marginBottom:moderateScaleVertical(24),
         textTransform:'uppercase',

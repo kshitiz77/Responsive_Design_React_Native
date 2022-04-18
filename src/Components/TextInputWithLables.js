@@ -5,6 +5,7 @@ import { scale, moderateScale, verticalScale, moderateScaleVertical } from '../s
 import strings from '../constants/lang';
 import colors from '../styles/colors';
 import imagePath from '../constants/imagePath';
+import fontFamily from '../styles/fontFamily';
 
 // create a component
 const TextInputWithLables = ({
@@ -49,13 +50,14 @@ const styles = StyleSheet.create({
     labelTextStyle: {
         fontSize: scale(15),
         color: colors.grayC,
-        fontWeight: '600'
+        fontFamily:fontFamily.mulishSemiBold
     },
     inputStyle: {
         flex:1,
         paddingVertical: moderateScaleVertical(8),
         fontSize: scale(16),
-        colors: colors.black,
+        color: colors.black,
+        fontFamily:fontFamily.mulishMedium
     },
     flexView: {
         flexDirection: 'row',

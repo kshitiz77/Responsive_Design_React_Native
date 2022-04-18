@@ -1,15 +1,13 @@
 //import liraries
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, Image, TouchableOpacity, ScrollView } from 'react-native';
-import HeaderComp from '../../Components/HeaderComp';
-import strings from '../../constants/lang';
-import { styles } from './styles';
+import { SafeAreaView, Text, View } from 'react-native';
 import ButtonComp from '../../Components/ButtonComp';
+import HeaderComp from '../../Components/HeaderComp';
+import TextInputWithLables from '../../Components/TextInputWithLables';
 import imagePath from '../../constants/imagePath';
-import navigationStrings from '../../constants/navigationStrings'
-import TextInputWithLables from '../../Components/TextInputWithLables'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import strings from '../../constants/lang';
 import { moderateScaleVertical } from '../../styles/responsiveSize';
+import { styles } from './styles';
 
 // create a component
 const SetPassword = ({navigation}) => {
@@ -32,7 +30,7 @@ const SetPassword = ({navigation}) => {
                      <ButtonComp
                     btnText={strings.CONTINUE}
                     btnStyle={styles.btnStyle}
-                    onPress={() => navigation.navigate(navigationStrings.FORGOT_PASSWORD)}
+                    // onPress={() => navigation.navigate(navigationStrings.FORGOT_PASSWORD)}
                     img={imagePath.forward}
                 />
             </View>

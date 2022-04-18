@@ -1,15 +1,15 @@
 //import liraries
-import React, { Component, useState } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, Image, TouchableOpacity, ScrollView } from 'react-native';
-import HeaderComp from '../../Components/HeaderComp';
-import { moderateScale, moderateScaleVertical } from '../../styles/responsiveSize';
-import strings from '../../constants/lang';
-import { styles } from './styles';
+import React, { useState } from 'react';
+import { Image, SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ButtonComp from '../../Components/ButtonComp';
+import HeaderComp from '../../Components/HeaderComp';
+import TextInputWithLables from '../../Components/TextInputWithLables';
 import imagePath from '../../constants/imagePath';
-import navigationStrings from '../../constants/navigationStrings'
-import TextInputWithLables from '../../Components/TextInputWithLables'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import strings from '../../constants/lang';
+import navigationStrings from '../../constants/navigationStrings';
+import { moderateScale, moderateScaleVertical } from '../../styles/responsiveSize';
+import { styles } from './styles';
 
 // create a component
 const Register = ({navigation}) => {

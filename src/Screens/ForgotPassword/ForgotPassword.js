@@ -1,40 +1,58 @@
 //import liraries
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, Image, TouchableOpacity, ScrollView } from 'react-native';
-import HeaderComp from '../../Components/HeaderComp';
-import strings from '../../constants/lang';
-import { styles } from './styles';
+import React, { useEffect, useState } from 'react';
+import { Keyboard, SafeAreaView, Text, View } from 'react-native';
 import ButtonComp from '../../Components/ButtonComp';
-import imagePath from '../../constants/imagePath';
-import navigationStrings from '../../constants/navigationStrings'
-import TextInputWithLables from '../../Components/TextInputWithLables'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import HeaderComp from '../../Components/HeaderComp';
+import TextInputWithLables from '../../Components/TextInputWithLables';
+import strings from '../../constants/lang';
+import navigationStrings from '../../constants/navigationStrings';
 import { moderateScaleVertical } from '../../styles/responsiveSize';
+import { styles } from './styles';
 
 // create a component
-const ForgotPassword = ({navigation}) => {
-    const [isVisible, setIsVisible] = useState()
+const ForgotPassword = ({ navigation }) => {
+    const [keyboardHeight , setKeyboardHeight] = useState(0);
+
+    useEffect(() =>{
+        const keyboardDiDShowListener = Keyboard.addListener('keyboardDiDShow', (event)=>{
+            console.log('event trigger on show event' ,  event);
+            setKeyboardHeight(event.endCoordinates.height - 336)
+        })
+        const keyboardDiDHideListener = Keyboard.addListener('keyboardDiDHide', (event)=>{
+            console.log('event trigger on show event' ,  event);
+            setKeyboardDiDShowListener(0)
+        });
+        return () =>{
+            keyboardDiDHideListener.remove()
+            keyboardDiDShowListener.remove()
+        }
+        
+    })
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <View style={styles.container}>
                 <HeaderComp />
-                <Text style={styles.headingText}>{strings.FORGOT_PASSWORD_HEADING}</Text>
-                <Text style={styles.descText}>{strings.FORGOT_PASSWORD_DESC}</Text>
-                <Text style={styles.userPhoneNumber}>+911234567890</Text>
-                <TextInputWithLables
-                    placeholder={strings.ENTER_YOUR_PASSWORD}
-                    label={strings.PASSWORD} 
-                    secureTextEntry={isVisible}
-                    rightIcon={isVisible ? imagePath.hideEye : imagePath.showEye}
-                    onPressRight={() => setIsVisible(!isVisible)}
-                    inputStyle={{marginVertical:moderateScaleVertical(54)}}
-                    /> 
-                     <ButtonComp
-                    btnText={strings.CONTINUE}
-                    btnStyle={styles.btnStyle}
-                    onPress={() => navigation.navigate(navigationStrings.SET_PASSWORD)}
-                    img={imagePath.forward}
-                />
+                <View style={{flex:1}}>
+                    <View style={{flex:0.2, alignItems:'center', justifyContent:'center'}}>
+                        <Text>LOCK ICON</Text>
+                    </View>
+                    <View style={{flex:0.4}}>
+                        <Text style={styles.headingText}>{strings.FORGOT_PASSWORD_HEADING}</Text>
+                        <Text style={styles.descText}>{strings.FORGOT_PASSWORD_DESC}</Text>
+                    </View>
+                    <View style={{flex:0.4, marginBottom: keyboardHeight}}>
+                        <TextInputWithLables
+                            placeholder={strings.ENTER_YOUR_EMAIL}
+                            label={strings.EMAIL_ADDRESS}
+                            inputStyle={{ marginBottom: moderateScaleVertical(28), }}
+                            keyboardType='email-address'
+                        />
+                        <ButtonComp
+                            btnText={strings.SEND}
+                            onPress={() => navigation.navigate(navigationStrings.SET_PASSWORD)}
+                        />
+                    </View>
+                </View>
             </View>
         </SafeAreaView>
     );

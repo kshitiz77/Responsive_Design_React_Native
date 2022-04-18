@@ -1,13 +1,13 @@
 //import liraries
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, Image } from 'react-native';
+import React from 'react';
+import { Image, SafeAreaView, Text, View } from 'react-native';
+import ButtonComp from '../../Components/ButtonComp';
 import HeaderComp from '../../Components/HeaderComp';
-import { moderateScale } from '../../styles/responsiveSize';
-import strings from '../../constants/lang';
-import { styles } from './styles';
-import ButtonComp from '../../Components/ButtonComp'
 import imagePath from '../../constants/imagePath';
-import navigationStrings from '../../constants/navigationStrings'
+import strings from '../../constants/lang';
+import navigationStrings from '../../constants/navigationStrings';
+import { moderateScale } from '../../styles/responsiveSize';
+import { styles } from './styles';
 // create a component
 const ChooseAccount = ({navigation}) => {
   return (

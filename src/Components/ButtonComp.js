@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import colors from '../styles/colors';
+import fontFamily from '../styles/fontFamily';
 import { moderateScale, moderateScaleVertical, scale } from '../styles/responsiveSize';
 
 // create a component
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
     btnTextStyle:{
         fontSize:moderateScale(16),
         color:colors.white,
-        fontWeight:'bold',
+        fontFamily:fontFamily.mulishBold,
         textTransform:'uppercase'
     }
 });
