@@ -1,25 +1,94 @@
 //import liraries
-import React, { useState } from 'react';
-import { ImageBackground, Text, TouchableOpacity, View, Image } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Image, ImageBackground, Text, TouchableOpacity, View } from 'react-native';
+import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
+import RNRestart from 'react-native-restart';
 import ButtonComp from '../../Components/ButtonComp';
 import TextInputWithLables from '../../Components/TextInputWithLables';
 import imagePath from '../../constants/imagePath';
 import strings, { changeLaguage } from '../../constants/lang';
 import navigationStrings from '../../constants/navigationStrings';
-import colors from '../../styles/colors';
-import { moderateScaleVertical, scale } from '../../styles/responsiveSize';
+import { moderateScaleVertical } from '../../styles/responsiveSize';
 import { styles } from './styles';
-import RNRestart from 'react-native-restart'
-
+import { LoginManager, GraphRequest, GraphRequestManager } from 'react-native-fbsdk'
 // create a component
 const Login = ({ navigation }) => {
     const [isVisible, setIsVisible] = useState()
 
-    const [lng, setLng] = useState()
+    // const [lng, setLng] = useState()
+
+    useEffect(() => {
+        GoogleSignin.configure()
+    }, [])
+
+    const googleLogin = async () => {
+        try {
+            await GoogleSignin.hasPlayServices();
+            const userInfo = await GoogleSignin.signIn();
+            console.log("userInfo", userInfo)
+            // this.setState({ userInfo });
+        } catch (error) {
+            if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+                // user cancelled the login flow
+                console.log("error", error)
+            } else if (error.code === statusCodes.IN_PROGRESS) {
+                // operation (e.g. sign in) is in progress already
+                console.log("error", error)
+            } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+                // play services not available or outdated
+                console.log("error", error)
+            } else {
+                // some other error happened
+                console.log("error", error)
+            }
+        }
+    };
 
     const changeAppLaguage = (key) => {
         changeLaguage(key)
         RNRestart.Restart()
+    }
+
+    const fbLogin = (resCallBack) => {
+        LoginManager.logOut();
+        return LoginManager.logInWithPermissions(['email', 'public_profile']).then(
+            result => {
+                console.log("FB_LOGIN_RESULT =====>", result);
+                if (result.declinedPermissions && result.declinedPermissions.includes('email')) {
+                    resCallBack({ message: "email is required" })
+                }
+                if (result.isCancelled) {
+                    console.log("error")
+                } else {
+                    const infoResquest = new GraphRequest(
+                        '/me?Fields = email, name, picture,friend',
+                        null,
+                        resCallBack
+                    );
+                    new GraphRequestManager().addRequest(infoResquest).start()
+                }
+            },
+            function (error) {
+                console.log("login failed with error", error)
+            }
+        )
+    }
+
+    const onFbLogin = async () => {
+        try {
+            await fbLogin(resInfoCallBack)
+        } catch (error) {
+            console.log("error", error)
+        }
+    }
+
+    const resInfoCallBack = async (error, result) => {
+        if (error) {
+            console.log("Login Error", error)
+        } else {
+            const userData = result;
+            console.log(userData)
+        }
     }
     // const 
     return (
@@ -53,13 +122,13 @@ const Login = ({ navigation }) => {
                     <ButtonComp
                         btnText={strings.LOGIN}
                     />
-                    <TouchableOpacity style={styles.authBtnContainer}>
-                        <Image source={imagePath.fbLogo} style={styles.authImgStyle}/>
+                    <TouchableOpacity style={styles.authBtnContainer} activeOpacity={0.8} onPress={onFbLogin}>
+                        <Image source={imagePath.fbLogo} style={styles.authImgStyle} />
                         <Text style={styles.authTextStyle}>{strings.LOGIN_WITH_FACEBOOK}</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.authBtnContainer}>
-                        <Image source={imagePath.googleLogo} style={styles.authImgStyle}/>
-                        <Text style={styles.authTextStyle}>{strings.LOGIN_WITH_FACEBOOK}</Text>
+                    <TouchableOpacity style={styles.authBtnContainer} onPress={googleLogin}>
+                        <Image source={imagePath.googleLogo} style={styles.authImgStyle} />
+                        <Text style={styles.authTextStyle}>{strings.LOGIN_WITH_GOOGLE}</Text>
                     </TouchableOpacity>
                     {/* <ButtonComp
                         btnText={strings.CHANGE_LANGUAGE_EN}

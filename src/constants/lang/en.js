@@ -39,4 +39,5 @@ export default{
     CHANGE_LANGUAGE_EN : 'Change language - English',
     CHANGE_LANGUAGE_FR : 'Change language - French',
     LOGIN_WITH_FACEBOOK : 'Login with facebook',
+    LOGIN_WITH_GOOGLE : 'Login with google',
 }

@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import navigationStrings from '../constants/navigationStrings'
 import {
     Login,
@@ -9,9 +8,9 @@ import {
     Register
 } from '../Screens'
 
-const Stack = createNativeStackNavigator();
 
-const AuthStack = () =>{
+const AuthStack = (Stack) =>{
+    console.log(Stack)
     return(
         <Stack.Navigator screenOptions={{ headerShown:false }}>
             <Stack.Screen name={navigationStrings.LOGIN} component={Login}/>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "264260905569",
+    "project_id": "responsivedesign-2d4e0",
+    "storage_bucket": "responsivedesign-2d4e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:264260905569:android:52cc192f3bb48242aed820",
+        "android_client_info": {
+          "package_name": "com.responsivedesignreactnative"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "264260905569-f9vgi240fu4rqek6hlhumqlb6elqbnbe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.responsivedesignreactnative",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "264260905569-77r2tbf06ikshceve9tji2jsl9hna9p3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0I-Fvq0bQDB38tu5vVoRyK58jYRXzZL8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "264260905569-77r2tbf06ikshceve9tji2jsl9hna9p3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'space-evenly',
         flexDirection:'row',
-        marginVertical:moderateScaleVertical(20)
+        marginTop:moderateScaleVertical(20)
     },
     authImgStyle:{
         width:moderateScale(30),

@@ -2,8 +2,12 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useEffect,useState } from 'react';
 import { View } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Provider } from 'react-redux';
+import store from './src/redux/store';
 import strings from './src/constants/lang';
 import Routes from './src/navigation/Routes';
+import { Home } from './src/Screens';
 
 // create a component
 const App = () => {
@@ -31,9 +35,11 @@ const App = () => {
   }
 
   return (
-    <View style={{flex:1}}>
+    <SafeAreaProvider>
+      <Provider store={store}>
       {lng?<Routes />: <View/>}
-    </View>
+    </Provider>
+    </SafeAreaProvider>
   );
 };
 
