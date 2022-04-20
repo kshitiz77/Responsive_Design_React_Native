@@ -9,19 +9,19 @@ const userStatus = (state = initialState, action) => {
     switch (action.type) {
         case types.LOGIN:
             let data = action.payload;
+            console.log('data', data)
             setUserData(data)
             return {
-                ...state.userData,
+                // ...state.userData,
                 userData: data
             }
         case types.USER_LOGOUT:
             removeUserData();
             getUserData().then((res) => {
                 console.log("user Status", res)
-                return { ...state.userData, userData: res }
+                return { userData: res }
             })
             return {
-                ...state.userData,
                 userData: undefined
             }
         default: return state;

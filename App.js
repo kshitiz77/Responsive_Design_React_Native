@@ -1,21 +1,29 @@
 //import liraries
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
-import store from './src/redux/store';
 import strings from './src/constants/lang';
 import Routes from './src/navigation/Routes';
-import { Home } from './src/Screens';
+import store from './src/redux/store';
+import { getUserData } from './src/utils/utils';
+import actions from './src/redux/actions';
+import { requestUserPermission, notificationListener } from './src/utils/notificationServices'
 
 // create a component
 const App = () => {
 
   const [lng, setLng] = useState(false)
 
-  useEffect(() =>{
+  useEffect(() => {
+    requestUserPermission()
+    notificationListener()
     getLng();
+    getUserData().then((res) => {
+      console.log("store data", res)
+      actions.login(res)
+    })
   }, [])
 
   const getLng = async () => {
@@ -37,8 +45,8 @@ const App = () => {
   return (
     <SafeAreaProvider>
       <Provider store={store}>
-      {lng?<Routes />: <View/>}
-    </Provider>
+        {lng ? <Routes /> : <View />}
+      </Provider>
     </SafeAreaProvider>
   );
 };

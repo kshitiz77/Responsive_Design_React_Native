@@ -10,9 +10,10 @@ const Stack = createNativeStackNavigator();
 // create a component
 const Routes = () => {
     const userStatus = useSelector((state) => state?.userStatus?.userData)
+    console.log(userStatus)
     return (
         <NavigationContainer>
-            {true ? MainStack(Stack) : AuthStack(Stack)}
+            {userStatus != null ? MainStack(Stack) : AuthStack(Stack)}
         </NavigationContainer>
     );
 };

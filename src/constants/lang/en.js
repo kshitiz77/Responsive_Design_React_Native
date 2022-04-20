@@ -9,6 +9,7 @@ export default{
     FORGOT_PASSWORD_DESC:'Enter the email address associated with your account',
     FORGOT_PASSWORD_TEXT:"Forgot Password ?",
     LOGIN:"Login",
+    LOGOUT:"Logout",
     REGISTER:'Register',
     JOIN_NOW:"Join Now",
     NOT_A_MEMBER:"Not a member?",

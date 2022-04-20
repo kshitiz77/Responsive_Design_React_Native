@@ -1,8 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.responsivedesignreactnative">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/> -->
+    
+<uses-permission android:name="android.permission.INTERNET"/>
+
+
+    <!-- <uses-permission android:name="android.permission.ACC
+    
+    ESS_NETWORK_STATE"/> -->
 
     <application
       android:name=".MainApplication"
@@ -23,10 +28,8 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
-      <meta-data android:name="com.facebook.sdk.ApplicationId"  
-      android:value="@string/facebook_app_id"/>
-   	<meta-data android:name="com.facebook.sdk.ClientToken" 
-     android:value="@string/facebook_client_token"/>
+      <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+   	<meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
 
     
     <activity

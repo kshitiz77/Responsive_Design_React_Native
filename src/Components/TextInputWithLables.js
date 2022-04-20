@@ -24,6 +24,7 @@ const TextInputWithLables = ({
                 <TextInput
                     placeholder={placeholder}
                     style={styles.inputStyle}
+                    onChangeText={onChangeText}
                     {...props}
                 />
                 {rightIcon ? 

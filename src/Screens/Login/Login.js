@@ -10,11 +10,44 @@ import strings, { changeLaguage } from '../../constants/lang';
 import navigationStrings from '../../constants/navigationStrings';
 import { moderateScaleVertical } from '../../styles/responsiveSize';
 import { styles } from './styles';
-import { LoginManager, GraphRequest, GraphRequestManager } from 'react-native-fbsdk'
+import actions from '../../redux/actions';
+import { GraphRequest, GraphRequestManager, LoginManager} from 'react-native-fbsdk'
 // create a component
 const Login = ({ navigation }) => {
     const [isVisible, setIsVisible] = useState()
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [emailError, setEmailError] = useState(false)
+    const [passwordError, setPasswordError] = useState(false)
 
+    const userData = {
+        email: email,
+        password : password
+    }
+    const handleEmail = (email) => {
+        setEmail(() => email)
+    }
+
+    const handlePassword = (password) => {
+        setPassword(() => password)
+    }
+
+    const handleSubmitBtn = () => {
+        if (email === "") {
+            setEmailError(true)
+        } else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
+            setEmailError(true)
+        } else if (password === "") {
+            setEmailError(false)
+            setPasswordError(true)
+        } else if (password.length < 6) {
+            setPasswordError(true)
+        } else {
+            setPasswordError(false)
+            console.log(email, password)
+            actions.login(userData)
+        }
+    }
     // const [lng, setLng] = useState()
 
     useEffect(() => {
@@ -26,6 +59,10 @@ const Login = ({ navigation }) => {
             await GoogleSignin.hasPlayServices();
             const userInfo = await GoogleSignin.signIn();
             console.log("userInfo", userInfo)
+            const email = userInfo.user.email;
+            const userId = userInfo.user.id;
+            const data = {email, userId}
+            actions.login(data)
             // this.setState({ userInfo });
         } catch (error) {
             if (error.code === statusCodes.SIGN_IN_CANCELLED) {
@@ -61,7 +98,7 @@ const Login = ({ navigation }) => {
                     console.log("error")
                 } else {
                     const infoResquest = new GraphRequest(
-                        '/me?Fields = email, name, picture,friend',
+                        '/me?fields = email, name, picture',
                         null,
                         resCallBack
                     );
@@ -81,13 +118,15 @@ const Login = ({ navigation }) => {
             console.log("error", error)
         }
     }
-
+    
     const resInfoCallBack = async (error, result) => {
         if (error) {
             console.log("Login Error", error)
         } else {
             const userData = result;
             console.log(userData)
+            Login(userData);
+            
         }
     }
     // const 
@@ -103,15 +142,19 @@ const Login = ({ navigation }) => {
                     <TextInputWithLables
                         placeholder={strings.ENTER_YOUR_EMAIL}
                         label={strings.EMAIL_ADDRESS}
+                        value={email}
                         inputStyle={{ marginBottom: moderateScaleVertical(28) }}
                         keyboardType='email-address'
+                        onChangeText={(email) =>handleEmail(email)}
                     />
                     <TextInputWithLables
                         placeholder={strings.ENTER_YOUR_PASSWORD}
                         label={strings.PASSWORD}
+                        value={password}
                         secureTextEntry={isVisible}
                         rightIcon={isVisible ? imagePath.hideEye : imagePath.showEye}
                         onPressRight={() => setIsVisible(!isVisible)}
+                        onChangeText={(password) =>handlePassword(password)}
                     />
                     <TouchableOpacity
                         style={styles.forgotView}
@@ -121,6 +164,7 @@ const Login = ({ navigation }) => {
                     </TouchableOpacity>
                     <ButtonComp
                         btnText={strings.LOGIN}
+                        onPress={handleSubmitBtn}
                     />
                     <TouchableOpacity style={styles.authBtnContainer} activeOpacity={0.8} onPress={onFbLogin}>
                         <Image source={imagePath.fbLogo} style={styles.authImgStyle} />
