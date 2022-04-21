@@ -8,13 +8,13 @@ const Stack = createStackNavigator();
 const HomeStack = () => {
   return (
     <>
-      {/* <Stack.Navigator initialRouteName={navigationStrings.HOME}>
-        <Stack.Screen
+      {/* <Stack.Navigator initialRouteName={navigationStrings.HOME}> */}
+        {/* <Stack.Screen
           options={{ headerShown: false }}
           name={navigationStrings.HOME}
           component={Home}
-        />
-      </Stack.Navigator> */}
+        /> */}
+      {/* </Stack.Navigator> */}
     </>
   )
 }

@@ -4,5 +4,6 @@ export default{
     CHOOSE_ACCOUNT : "ChooseAccount",
     FORGOT_PASSWORD : "ForgotPassword",
     SET_PASSWORD : "SetPassword",
-    HOME : "Home"
+    HOME : "Home",
+    HOME_STACK: 'HomeStack'
 }
