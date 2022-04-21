@@ -1,4 +1,5 @@
 export default{
+    CHOOSE_LANGUAGE:"Choisissez la langue",
     EMAIL_ADDRESS:"Adresse e-mail",
     ENTER_YOUR_EMAIL:"Entrer votre email",
     ENTER_YOUR_PASSWORD:"Tapez votre mot de passe",
@@ -36,7 +37,7 @@ export default{
     REFERRAL_CODE:'Code de Parrainage',
     PRIVACY_POLICY_TEXT:`En vous connectant, vous acceptez la politique de confidentialité et les conditions d'utilisation de NOOVVOO `,
     SEND:'ENVOYER',
-    CHANGE_LANGUAGE_EN : 'Changer de langue - Anglais',
+    CHANGE_LANGUAGE_EN : 'Change language - English',
     CHANGE_LANGUAGE_FR : 'Changer de langue - Français',
     LOGIN_WITH_FACEBOOK : 'Se connecter avec Facebook'
 }

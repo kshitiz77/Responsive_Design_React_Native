@@ -22,7 +22,7 @@ const Home = () => {
     }
     return (
         <View style={styles.container}>
-            <Text>{userStatus.email}</Text>
+            <Text>{userStatus?.email}</Text>
             <ButtonComp
                         btnText={strings.LOGOUT}
                         onPress={signOut}

@@ -1,4 +1,5 @@
 export default{
+    CHOOSE_LANGUAGE:"Choose Language",
     EMAIL_ADDRESS:"Email address",
     ENTER_YOUR_EMAIL:"Enter your email",
     ENTER_YOUR_PASSWORD:"Enter your password",

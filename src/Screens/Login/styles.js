@@ -12,14 +12,27 @@ export const styles = StyleSheet.create({
     imgStyle: {
         height: moderateScale(200),
         width: "100%",
-        justifyContent: 'center',
-        alignItems: 'center',
+        // justifyContent: 'cent',
+    },
+    chooseLanguageStyle:{
+        backgroundColor:colors.gray, 
+        paddingHorizontal:moderateScale(20), 
+        borderRadius:moderateScale(5), 
+        marginVertical:moderateScaleVertical(12), 
+        paddingVertical:moderateScaleVertical(5), 
+        alignSelf:'flex-end'
+    },
+    chooseLanguageText:{
+        color:colors.black, 
+        fontSize:scale(14)
     },
     loginTextStyle: {
         fontFamily:fontFamily.mulishBold,
+        marginVertical:moderateScaleVertical(12),
         color: colors.white,
         fontSize: scale(32),
-        textTransform:'uppercase'
+        textTransform:'uppercase',
+        alignSelf:'center'
     },
     mainStyle: {
         paddingTop: moderateScaleVertical(44),
@@ -69,5 +82,18 @@ export const styles = StyleSheet.create({
         color:colors.black,
         fontSize:scale(16),
         fontFamily:fontFamily.mulishSemiBold
-    }
+    },
+
+    // modal style
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22,
+      },
+      modalContainerStyle:{
+          backgroundColor:colors.white,
+          paddingHorizontal:moderateScale(10),
+          borderRadius:moderateScale(5)
+      }
 });

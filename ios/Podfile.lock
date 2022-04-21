@@ -463,6 +463,8 @@ PODS:
     - Firebase/Messaging (= 8.14.0)
     - React-Core
     - RNFBApp
+  - RNGestureHandler (2.4.1):
+    - React-Core
   - RNGoogleSignin (7.2.2):
     - GoogleSignIn (~> 6.1.0)
     - React-Core
@@ -536,6 +538,7 @@ DEPENDENCIES:
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - "RNGoogleSignin (from `../node_modules/@react-native-google-signin/google-signin`)"
   - RNScreens (from `../node_modules/react-native-screens`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -649,6 +652,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/app"
   RNFBMessaging:
     :path: "../node_modules/@react-native-firebase/messaging"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
   RNGoogleSignin:
     :path: "../node_modules/@react-native-google-signin/google-signin"
   RNScreens:
@@ -723,6 +728,7 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: bef53cb70c06b8eff11bab4a848de86ad4488c39
   RNFBApp: 097a31d372b3db15b41c7a1a5c429433b0609e12
   RNFBMessaging: 82253bea3f5224fd8929978c246afdc24a40ffe3
+  RNGestureHandler: 4f4986408310a43f1606c391f38f76e0d6e790d5
   RNGoogleSignin: 7580e6618798be9d090524bb31538378f92ce746
   RNScreens: 40a2cb40a02a609938137a1e0acfbf8fc9eebf19
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608

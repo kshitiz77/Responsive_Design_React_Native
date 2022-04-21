@@ -1,6 +1,6 @@
 //import liraries
 import React, { useState, useEffect } from 'react';
-import { Image, ImageBackground, Text, TouchableOpacity, View } from 'react-native';
+import { Image, ImageBackground, Text, TouchableOpacity, View, Modal } from 'react-native';
 import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 import RNRestart from 'react-native-restart';
 import ButtonComp from '../../Components/ButtonComp';
@@ -8,12 +8,14 @@ import TextInputWithLables from '../../Components/TextInputWithLables';
 import imagePath from '../../constants/imagePath';
 import strings, { changeLaguage } from '../../constants/lang';
 import navigationStrings from '../../constants/navigationStrings';
-import { moderateScaleVertical } from '../../styles/responsiveSize';
+import { moderateScale, moderateScaleVertical, scale } from '../../styles/responsiveSize';
 import { styles } from './styles';
 import actions from '../../redux/actions';
-import { GraphRequest, GraphRequestManager, LoginManager} from 'react-native-fbsdk'
+import { GraphRequest, GraphRequestManager, LoginManager } from 'react-native-fbsdk'
+import colors from '../../styles/colors';
 // create a component
 const Login = ({ navigation }) => {
+    const [modalVisible, setModalVisible] = useState(false);
     const [isVisible, setIsVisible] = useState()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -22,7 +24,7 @@ const Login = ({ navigation }) => {
 
     const userData = {
         email: email,
-        password : password
+        password: password
     }
     const handleEmail = (email) => {
         setEmail(() => email)
@@ -61,7 +63,7 @@ const Login = ({ navigation }) => {
             console.log("userInfo", userInfo)
             const email = userInfo.user.email;
             const userId = userInfo.user.id;
-            const data = {email, userId}
+            const data = { email, userId }
             actions.login(data)
             // this.setState({ userInfo });
         } catch (error) {
@@ -83,6 +85,7 @@ const Login = ({ navigation }) => {
 
     const changeAppLaguage = (key) => {
         changeLaguage(key)
+        setModalVisible(!modalVisible)
         RNRestart.Restart()
     }
 
@@ -118,7 +121,7 @@ const Login = ({ navigation }) => {
             console.log("error", error)
         }
     }
-    
+
     const resInfoCallBack = async (error, result) => {
         if (error) {
             console.log("Login Error", error)
@@ -126,7 +129,7 @@ const Login = ({ navigation }) => {
             const userData = result;
             console.log(userData)
             actions.login(userData);
-            
+
         }
     }
     // const 
@@ -136,6 +139,38 @@ const Login = ({ navigation }) => {
                 <ImageBackground
                     source={{ uri: "https://wallpaperaccess.com/full/342047.jpg" }}
                     style={styles.imgStyle}>
+                    <View>
+                        <Modal
+                            animationType="slide"
+                            transparent={true}
+                            visible={modalVisible}
+                            onRequestClose={() => {
+                                // Alert.alert("Modal has been closed.");
+                                setModalVisible(!modalVisible);
+                            }}
+                        >
+
+                            <View style={styles.centeredView}>
+                                <View style={styles.modalContainerStyle} >
+
+
+                                    <ButtonComp
+                                        btnText={strings.CHANGE_LANGUAGE_EN}
+                                        btnStyle={{ marginVertical: moderateScaleVertical(20) }}
+                                        onPress={() => changeAppLaguage('en')}
+                                    />
+                                    <ButtonComp
+                                        btnText={strings.CHANGE_LANGUAGE_FR}
+                                        btnStyle={{ marginBottom: moderateScaleVertical(20), paddingHorizontal: moderateScale(10) }}
+                                        onPress={() => changeAppLaguage('fr')}
+                                    />
+                                </View>
+                            </View>
+                        </Modal>
+                        <TouchableOpacity style={styles.chooseLanguageStyle} onPress={() => setModalVisible(!modalVisible)}>
+                            <Text style={styles.chooseLanguageText}>{strings.CHOOSE_LANGUAGE}</Text>
+                        </TouchableOpacity>
+                    </View>
                     <Text style={styles.loginTextStyle}>{strings.LOGIN}</Text>
                 </ImageBackground>
                 <View style={styles.mainStyle}>
@@ -145,7 +180,7 @@ const Login = ({ navigation }) => {
                         value={email}
                         inputStyle={{ marginBottom: moderateScaleVertical(28) }}
                         keyboardType='email-address'
-                        onChangeText={(email) =>handleEmail(email)}
+                        onChangeText={(email) => handleEmail(email)}
                     />
                     <TextInputWithLables
                         placeholder={strings.ENTER_YOUR_PASSWORD}
@@ -154,7 +189,7 @@ const Login = ({ navigation }) => {
                         secureTextEntry={isVisible}
                         rightIcon={isVisible ? imagePath.hideEye : imagePath.showEye}
                         onPressRight={() => setIsVisible(!isVisible)}
-                        onChangeText={(password) =>handlePassword(password)}
+                        onChangeText={(password) => handlePassword(password)}
                     />
                     <TouchableOpacity
                         style={styles.forgotView}
@@ -174,15 +209,7 @@ const Login = ({ navigation }) => {
                         <Image source={imagePath.googleLogo} style={styles.authImgStyle} />
                         <Text style={styles.authTextStyle}>{strings.LOGIN_WITH_GOOGLE}</Text>
                     </TouchableOpacity>
-                    {/* <ButtonComp
-                        btnText={strings.CHANGE_LANGUAGE_EN}
-                        btnStyle={{ marginVertical: moderateScaleVertical(20) }}
-                        onPress={() => changeAppLaguage('en')}
-                    />
-                    <ButtonCompz
-                        btnText={strings.CHANGE_LANGUAGE_FR}
-                        onPress={() => changeAppLaguage('fr')}
-                    /> */}
+
                 </View>
             </View>
             <View style={styles.bottomView}>
