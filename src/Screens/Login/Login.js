@@ -125,7 +125,7 @@ const Login = ({ navigation }) => {
         } else {
             const userData = result;
             console.log(userData)
-            Login(userData);
+            actions.login(userData);
             
         }
     }
