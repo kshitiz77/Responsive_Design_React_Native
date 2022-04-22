@@ -6,10 +6,10 @@ import HomeStack from './HomeStack'
 const MainStack = (Stack) => {
   return (
     <>
-<Stack.Navigator initialRouteName={navigationStrings.HOME}>
+<Stack.Navigator>
       <Stack.Screen
         name={navigationStrings.HOME}
-        component={Home}
+        component={HomeStack}
         options={{ headerShown: false }}
       />
       </Stack.Navigator>
